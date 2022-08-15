@@ -41,3 +41,25 @@ mysql
 - Proses 2 melakukan SELECT FOR UPDATE untuk data 001, diminta menunggu karena di lock oleh Proses 1 
 - Akhirnya Proses 1 dan Proses 2 saling menunggu 
 - Deadlock terjadi
+
+# Locking Table
+- MySQL mendukung proses locking terhadap sebuah tabel
+- Jika kita me lock table, artinya satu seluruh data di tabel tersebut akan di lock
+- Ada 2 jenis lock table, yaitu READ dan WRITE
+- Cara melakukan locking table adalah dengan perintah
+  - LOCK TABLES nama_table READ;
+  - LOCK TABLES nama_Table WRITE
+- Setelah selesai melakukan lock table, kita bisa melakukan unlock dengan perintah : UNLOCK TABLES;
+
+# Behaviour Lock Tables
+![lock tables](img/img.png)
+
+# Locking Instance
+- Salah satu fitur lock lainnya di MySQL adalah lock instance 
+- Lock instance adalah perintah locking yang akan membuat perintah DDL (data definition language) akan diminta menunggu sampai proses unlock instance 
+- Biasanya proses locking instance ini terjadi ketika misal kita ingin melakukan backup data, agar tidak terjadi perubahan terhadap struktur tabel misalnya, kita bisa melakukan locking instance 
+- Setelah proses backup selesai, baru kita unlock lagi instance nya 
+- Untuk melakukan locking instance, kita bisa gunakan perintah :
+  - LOCK INSTANCE FOR BACKUP; 
+- Untuk melakukan unlock instance, kita bisa gunakan perintah :
+  - UNLOCK INSTANCE;
