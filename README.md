@@ -63,3 +63,28 @@ mysql
   - LOCK INSTANCE FOR BACKUP; 
 - Untuk melakukan unlock instance, kita bisa gunakan perintah :
   - UNLOCK INSTANCE;
+
+# User Management
+## Root User
+- Secara default, mysql membuat root user sebagai super administrator 
+- Namun best practice nya, saat kita menjalankan MySQL dengan aplikasi yang kita buat, sangat disarankan tidak menggunakan user root 
+- Lebih baik kita buat user khusus untuk tiap aplikasi, bahkan kita bisa batasi hak akses user tersebut, seperti hanya bisa melakukan SELECT, dan tidak boleh melakukan INSERT, UPDATE atau DELETE
+
+## Hak Akses dan User
+- Dalam user management MySQL, kita akan mengenal istilah Hak Akses dari User
+
+## Daftar Hak Akses
+- Ada banyak sekali hak akses di MySQL 
+- Kita bisa melihatnya di daftar tabel yang terdapat di halaman berikut :
+- https://dev.mysql.com/doc/refman/8.0/en/grant.html 
+
+# Backup Database
+- Saat membuat aplikasi menggunakan database, ada baiknya kita selalu melakukan backup data secara reguler 
+- Untungnya MySQL mendukung proses backup database 
+- Untuk melakukan backup database, kita tidak menggunakan perintah SQL, melainkan MySQL menyediakan sebuah aplikasi khusus untuk melakukan backup database, namanya adalah mysqldump
+- https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html 
+
+# Restore Database
+- Selain melakukan backup database, di MySQL juga kita bisa melakukan proses restore data dari file hasil backup
+- Untuk melakukan restore database, kita bisa menggunakan aplikasi mysql client atau menggunakan perintah SOURCE di MySQL
+
