@@ -500,3 +500,25 @@ INNER JOIN guestbooks ON (guestbooks.email = customer.email);
 SELECT DISTINCT customer.email, guestbooks.email FROM customer
 LEFT JOIN guestbooks ON (guestbooks.email = customer.email)
 WHERE guestbooks.email IS NULL;
+
+# Membuat/Menghapus User
+CREATE USER 'maya'@'localhost';
+CREATE USER 'triyanti'@'localhost';
+
+DROP USER 'maya'@'localhost';
+DROP USER 'triyanti'@'localhost';
+
+# Menambah/Menghapus Hak Akses ke User
+GRANT SELECT ON productsfulltextsearch.* TO 'maya'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON productsfulltextsearch.* TO 'triyanti'@'%';
+
+SHOW GRANTS FOR 'maya'@'localhost';
+SHOW GRANTS FOR 'triyanti'@'%';
+
+REVOKE SELECT ON productsfulltextsearch.* FROM 'maya'@'localhost';
+REVOKE SELECT, INSERT, UPDATE, DELETE ON productsfulltextsearch.* FROM 'triyanti'@'%';
+
+# Mengubah Password untuk User
+SET PASSWORD FOR 'maya'@'localhost' = 'rahasia';
+SET PASSWORD FOR 'triyanti'@'%' = 'rahasia';
+
