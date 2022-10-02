@@ -1,0 +1,29 @@
+@startuml
+
+entity User {
+    * id VARCHAR(100) <<PK>>
+    --
+    * name VARCHAR(100)
+}
+
+entity Notifications {
+    * id INT AUTO INCREMENT <<PK>>
+    --
+    * title VARCHAR(255)
+    * detail TEXT
+    * created_at TIMESTAMP
+    --
+    user_id VARCHAR(100) <<FK>>
+    category_id VARCHAR(100) <<FK>>
+}
+
+entity Category {
+    * id VARCHAR(100) <<PK>>
+    --
+    * name VARCHAR(100)
+}
+
+User ||--o{ Notifications
+Category ||-o{ Notifications
+
+@enduml

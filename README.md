@@ -12,6 +12,42 @@ sudo docker run --rm \
 -v "$PWD/storage/docker/mysqlpzn-db-data":/var/lib/mysql \
 mysql
 
+* Login MySQL
+  ```shell
+  mysql -uroot -p -h127.0.0.1 -P6603 
+  ```
+
+* Creat user
+  ```mysql
+  CREATE USER 'yukbelajar'@'%' IDENTIFIED WITH mysql_native_password BY 'PNSJkxXvVNDAhePMuExTBuRR';
+  ```
+
+* Allow access database
+  ```mysql
+  GRANT ALL ON mysqlpzn-db.* TO 'yukbelajar'@'%';
+  ```
+  exit;
+
+
+* Try login again with new user
+  ```shell
+  mysql -uyukbelajar -p -h127.0.0.1 -P6603 
+  ```
+
+* Show database
+  ```mysql
+  SHOW DATABASES; 
+  ```
+  the output:
+  ```shell
+  +--------------------+
+  | Database           |
+  +--------------------+
+  | information_schema |
+  | mysqlpzn-db        |
+  +--------------------+
+  2 rows in set (0,00 sec) 
+
 # Locking 
 - Locking adalah proses mengunci data di DBMS 
 - Proses mengunci data sangat penting dilakukan, salah satunya agar data benar-benar terjamin konsistensinya 
