@@ -1,5 +1,5 @@
 @startuml
-
+!theme amiga
 entity User {
     * id VARCHAR(100) <<PK>>
     --
@@ -12,6 +12,7 @@ entity Notifications {
     * title VARCHAR(255)
     * detail TEXT
     * created_at TIMESTAMP
+    * is_read BOOLEAN
     --
     user_id VARCHAR(100) <<FK>>
     category_id VARCHAR(100) <<FK>>
@@ -23,7 +24,17 @@ entity Category {
     * name VARCHAR(100)
 }
 
+entity NotificationsRead {
+    * id INT AUTO INCREMENT <<PK>>
+    --
+    * is_read BOOLEAN
+    --
+    * notification_id INT <<FK>>
+    * user_id VARCHAR(100) <<FK>>
+}
+
 User ||--o{ Notifications
 Category ||-o{ Notifications
-
+Notifications ||-o{ NotificationsRead
+User ||--o{ NotificationsRead
 @enduml
